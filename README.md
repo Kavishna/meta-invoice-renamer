@@ -10,7 +10,7 @@ I came across this project on Upwork and decided to give it a shot. Here are the
 
 Here's the attachment,with confidential details blacked out to maintain privacy.
 
-![a sample meta invoice provided by client](https://picsum.photos/200)
+![a sample meta invoice provided by client](https://raw.githubusercontent.com/Kavishna/meta-invoice-renamer/main/meta_invoice.png)
 
 Here are a few questions asked by the client, along with potential answers.
 
