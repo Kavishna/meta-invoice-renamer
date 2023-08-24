@@ -1,7 +1,45 @@
 import tkinter as tk
 from tkinter import filedialog
 import tkinter.messagebox as messagebox
+from PyPDF2 import PdfReader, PdfWriter
 import os
+import re
+
+
+def extract_ref_number(pdf_path):
+    # reguler expression finds text start with 'Reference Number:'
+    ref_pattern = r"Reference Number: ([A-Z0-9]+)"
+
+    with open(pdf_path, "rb") as pdf_file:
+        reader = PdfReader(pdf_file)
+        page = reader.pages[0]  # get first page of pdf
+        text = page.extract_text()  # convert first page into string
+
+        match = re.search(ref_pattern, text)  # find the pattern
+        if match:
+            ref_number = match.group(1)
+            return ref_number
+
+    return None
+
+# function extracts a reference number if it's present; otherwise, it returns "none".
+
+
+def extract_ref_number(pdf_path):
+    # reguler expression finds text start with 'Reference Number:'
+    ref_pattern = r"Reference Number: ([A-Z0-9]+)"
+
+    with open(pdf_path, "rb") as pdf_file:
+        reader = PdfReader(pdf_file)
+        page = reader.pages[0]  # get first page of pdf
+        text = page.extract_text()  # convert first page into string
+
+        match = re.search(ref_pattern, text)  # find the pattern
+        if match:
+            ref_number = match.group(1)
+            return ref_number
+
+    return None
 
 
 def update_file_count(directory):
