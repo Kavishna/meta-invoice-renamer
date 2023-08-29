@@ -77,6 +77,34 @@ def select_directory():
         app.selected_directory = directory_path  # Store the selected directory
 
 
+def process_pdfs():
+    directory_path = app.selected_directory
+    if directory_path:
+        pdf_files = [file for file in os.listdir(
+            directory_path) if file.lower().endswith(".pdf")]  # get pdf files
+
+        success_count = 0
+        failure_count = 0
+
+        for pdf_file in pdf_files:
+            pdf_path = os.path.join(directory_path, pdf_file)
+            ref_number = extract_ref_number(pdf_path)  # extracting ref no
+
+            if ref_number is None:  # if ref no is not availeble in pdf update the error count
+                failure_count += 1
+                continue
+
+            new_pdf_name = f"{ref_number}.pdf"  # set ref no as pdf name
+            new_pdf_path = os.path.join(directory_path, new_pdf_name)
+
+            if not os.path.exists(new_pdf_path):  # save pdf
+                os.rename(pdf_path, new_pdf_path)
+                success_count += 1
+
+        result_message = f"Renaming process is complete!\nSuccess: {success_count}\nFailed: {failure_count}"
+        messagebox.showinfo("Done", result_message)
+
+
 app = tk.Tk()
 app.title("Meta Invoice Renamer")
 app.geometry("400x200")
@@ -96,7 +124,8 @@ file_count_label = tk.Label(app, text="No selected directory")
 file_count_label.pack()
 
 # rename button
-rename_button = tk.Button(app, text="Rename", state='disabled')
+rename_button = tk.Button(
+    app, text="Rename", state='disabled', command=process_pdfs)
 rename_button.pack(pady=5)
 
 # Initialize the selected directory
