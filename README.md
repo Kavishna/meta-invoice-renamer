@@ -72,3 +72,21 @@ To manage files without reference numbers, I've introduced an error count. The f
     if  ref_number  is  None:
     	failure_count  +=  1
     	continue
+
+## screenshots
+
+1.  After choosing a directory, the app discovered 2 PDFs.
+
+    ![directory with pdfs](https://github.com/Kavishna/meta-invoice-renamer/blob/main/screenshot1.png?raw=true)
+
+2.  Upon selecting another directory, no PDFs were found.
+
+    ![no pdfs available](https://github.com/Kavishna/meta-invoice-renamer/blob/main/screenshot2.png?raw=true)
+
+![no pdfs available](https://github.com/Kavishna/meta-invoice-renamer/blob/main/screenshot3.png?raw=true)
+
+3. The renaming process was successful. One file matched the pattern, while the other did not.
+
+![success](https://github.com/Kavishna/meta-invoice-renamer/blob/main/screenshot4.png?raw=true)
+
+I've included a few sample files that follow the same pattern. This way, anyone can test and confirm that the app functions as intended.
